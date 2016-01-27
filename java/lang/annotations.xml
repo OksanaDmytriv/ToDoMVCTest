@@ -1,0 +1,5 @@
+<root>
+  <item name='java.lang.String java.lang.String substring(int, int)'>
+    <annotation name='java.lang.annotation.Deprecated'/>
+  </item>
+</root>
