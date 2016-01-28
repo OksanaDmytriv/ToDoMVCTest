@@ -53,15 +53,6 @@ public class ToDoTestMVCTest {
     }
 
     @Test
-    public void testDeleteWhileEditingAtAllFilter() {
-        givenAtAll("a", "b");
-
-        startEditing("a", " ").pressEnter();
-        assertTasks("b");
-        assertItemsLeft(1);
-    }
-
-    @Test
     public void testToggleOneTaskAtAllFilter() {
         givenAtAllFilter(aTask("a", ACTIVE),
                 aTask("b", COMPLETED));
@@ -148,16 +139,6 @@ public class ToDoTestMVCTest {
     }
 
     @Test
-    public void testEditAndClickOutsideAtActiveFilter() {
-        givenAtActive("a", "b");
-
-        startEditing("a", "a edited");
-        newTask.click();
-        assertTasks("a edited", "b");
-        assertItemsLeft(2);
-    }
-
-    @Test
     public void testDeleteWhileEditingAtActiveFilter() {
         givenAtActiveFilter(aTask("a", ACTIVE));
 
@@ -233,8 +214,8 @@ public class ToDoTestMVCTest {
 
     @Test
     public void testTasksCommonFlow() {
-        executeJavaScript("localStorage.clear()");
 
+        givenAll();
         add("a");
         assertVisibleTasks("a");
         assertItemsLeft(1);
@@ -406,6 +387,28 @@ public class ToDoTestMVCTest {
         givenAtAll(taskTexts);
         filterActive();
     }
+
+    @Step
+    private void givenAll() {
+        String js = "localStorage.setItem('todos-troopjs', '[{\"completed\":false, \"title\":\" \"}]');";
+        // якщо написати отак: "localStorage.setItem('todos-troopjs', '[{\"completed\":false, \"title\":\"\"}]');" - то ось що виходить :)
+        // http://take.ms/paMHMhttp://take.ms/paMHM
+        executeJavaScript(js);
+        refresh();
+        clearData();
+        refresh();
+    }
+
+    @Step
+    private void givenActive() {
+        givenAll();
+        filterActive();
+    }
+
+    private void clearData() {
+        executeJavaScript("localStorage.clear()");
+    }
+
 }
 
 
