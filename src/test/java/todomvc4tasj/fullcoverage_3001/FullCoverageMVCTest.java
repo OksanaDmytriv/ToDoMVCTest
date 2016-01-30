@@ -39,7 +39,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testEditAndClickOutsideAtAll() {
-        givenAtAll("a", "b");
+        givenAtAllFilter("a", "b");
 
         startEditing("a", "a edited");
         newTask.click();
@@ -107,7 +107,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testCompleteTasksAtActive() {
-        givenAtActive("a", "b");
+        givenAtActiveFilter("a", "b");
 
         toggleAll();
         assertEmptyVisibleTasks();
@@ -116,7 +116,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testEditAtActive() {
-        givenAtActive("a", "b");
+        givenAtActiveFilter("a", "b");
 
         startEditing("a", "a edited").pressEnter();
         assertTasks("a edited", "b");
@@ -125,7 +125,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testCancelEditAtActive() {
-        givenAtActive("a", "b");
+        givenAtActiveFilter("a", "b");
 
         startEditing("b", "b edited").pressEscape();
         assertTasks("a", "b");
@@ -354,7 +354,11 @@ public class FullCoverageMVCTest extends BaseTest {
                 js += toJSON(task);
             }
         }
-            js = js.substring(0, (js.length() - 1)) + "]');";
+        if (tasks.length == 0) {
+            js += " ";
+        }
+
+        js = js.substring(0, (js.length() - 1)) + "]');";
         executeJavaScript(js);
         refresh();
     }
@@ -377,7 +381,7 @@ public class FullCoverageMVCTest extends BaseTest {
     }
 
     @Step
-    private void givenAtAll(String... taskTexts) {
+    private void givenAtAllFilter(String... taskTexts) {
         ArrayList<Task> tasks = new ArrayList<Task>();
         for (String text : taskTexts) {
             tasks.add(aTask(text, ACTIVE));
@@ -387,8 +391,8 @@ public class FullCoverageMVCTest extends BaseTest {
     }
 
     @Step
-    private void givenAtActive(String... taskTexts) {
-        givenAtAll(taskTexts);
+    private void givenAtActiveFilter(String... taskTexts) {
+        givenAtAllFilter(taskTexts);
         filterActive();
     }
 
