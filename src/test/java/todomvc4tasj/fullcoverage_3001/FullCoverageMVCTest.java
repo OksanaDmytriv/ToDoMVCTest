@@ -39,7 +39,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testEditAndClickOutsideAtAll() {
-        givenAtAllFilter("a", "b");
+        givenAll("a", "b");
 
         startEditing("a", "a edited");
         newTask.click();
@@ -107,7 +107,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testCompleteTasksAtActive() {
-        givenAtActiveFilter("a", "b");
+        givenActive("a", "b");
 
         toggleAll();
         assertEmptyVisibleTasks();
@@ -116,7 +116,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testEditAtActive() {
-        givenAtActiveFilter("a", "b");
+        givenActive("a", "b");
 
         startEditing("a", "a edited").pressEnter();
         assertTasks("a edited", "b");
@@ -125,7 +125,7 @@ public class FullCoverageMVCTest extends BaseTest {
 
     @Test
     public void testCancelEditAtActive() {
-        givenAtActiveFilter("a", "b");
+        givenActive("a", "b");
 
         startEditing("b", "b edited").pressEscape();
         assertTasks("a", "b");
@@ -381,7 +381,7 @@ public class FullCoverageMVCTest extends BaseTest {
     }
 
     @Step
-    private void givenAtAllFilter(String... taskTexts) {
+    private void givenAll(String... taskTexts) {
         ArrayList<Task> tasks = new ArrayList<Task>();
         for (String text : taskTexts) {
             tasks.add(aTask(text, ACTIVE));
@@ -391,8 +391,8 @@ public class FullCoverageMVCTest extends BaseTest {
     }
 
     @Step
-    private void givenAtActiveFilter(String... taskTexts) {
-        givenAtAllFilter(taskTexts);
+    private void givenActive(String... taskTexts) {
+        givenAll(taskTexts);
         filterActive();
     }
 
