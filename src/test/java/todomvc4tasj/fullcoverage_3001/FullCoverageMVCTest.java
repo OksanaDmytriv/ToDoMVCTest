@@ -1,4 +1,4 @@
-package todomvc4tasj.fullcoverage_2701;
+package todomvc4tasj.fullcoverage_3001;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
@@ -12,8 +12,8 @@ import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static todomvc4tasj.fullcoverage_2701.FullCoverageMVCTest.TaskType.ACTIVE;
-import static todomvc4tasj.fullcoverage_2701.FullCoverageMVCTest.TaskType.COMPLETED;
+import static todomvc4tasj.fullcoverage_3001.FullCoverageMVCTest.TaskType.ACTIVE;
+import static todomvc4tasj.fullcoverage_3001.FullCoverageMVCTest.TaskType.COMPLETED;
 
 public class FullCoverageMVCTest extends BaseTest {
 
@@ -85,7 +85,6 @@ public class FullCoverageMVCTest extends BaseTest {
         toggleAll();
         assertItemsLeft(2);
     }
-
 
     //ACTIVE FILTER
 
@@ -213,7 +212,7 @@ public class FullCoverageMVCTest extends BaseTest {
     @Test
     public void testTasksCommonFlow() {
 
-
+        givenAtAll();
         add("a");
         assertVisibleTasks("a");
         assertItemsLeft(1);
@@ -350,10 +349,12 @@ public class FullCoverageMVCTest extends BaseTest {
     private void givenAtAll(Task... tasks) {
         ensureOpenedToDoMVC();
         String js = "localStorage.setItem('todos-troopjs', '[";
-        for (Task task : tasks) {
-            js += toJSON(task);
+        if (tasks.length > 0) {
+            for (Task task : tasks) {
+                js += toJSON(task);
+            }
         }
-        js = js.substring(0, (js.length() - 1)) + "]');";
+            js = js.substring(0, (js.length() - 1)) + "]');";
         executeJavaScript(js);
         refresh();
     }
