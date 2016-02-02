@@ -66,7 +66,7 @@ public class ToDoMVCTest extends BaseTest {
     }
 
     @Test
-    public void testActivateAtAll() {
+    public void testActivateAllAtAll() {
         givenAtAll(aTask("a", COMPLETED));
 
         assertItemsLeft(0);
@@ -104,7 +104,7 @@ public class ToDoMVCTest extends BaseTest {
     }
 
     @Test
-    public void testCompleteTasksAtActive() {
+    public void testCompleteAllAtActive() {
         givenAtActive("a", "b");
 
         toggleAll();
