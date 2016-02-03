@@ -120,7 +120,7 @@ public class ToDoMVCPage {
             open("https://todomvc4tasj.herokuapp.com/");
     }
 
-    public static void givenHelper(Task... tasks) {
+    private static void givenHelper(Task... tasks) {
         ensureOpenedToDoMVC();
         String js = "localStorage.setItem('todos-troopjs', '[";
         for (Task task : tasks) {

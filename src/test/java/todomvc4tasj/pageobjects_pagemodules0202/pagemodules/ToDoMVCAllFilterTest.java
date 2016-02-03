@@ -2,11 +2,11 @@ package todomvc4tasj.pageobjects_pagemodules0202.pagemodules;
 
 import org.junit.Test;
 
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.TaskType.ACTIVE;
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.TaskType.COMPLETED;
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.*;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.TaskType.ACTIVE;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.TaskType.COMPLETED;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.*;
 
-public class ToDoMVCAllFilterTest {
+public class ToDoMVCAllFilterTest extends BaseTest{
 
     @Test
     public void testEditAtAll() {

@@ -2,10 +2,10 @@ package todomvc4tasj.pageobjects_pagemodules0202.pagemodules;
 
 import org.junit.Test;
 
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.*;
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.TaskType.*;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.TaskType.COMPLETED;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.*;
 
-public class ToDoMVCCompletedFilterTest {
+public class ToDoMVCCompletedFilterTest extends BaseTest{
 
     @Test
     public void testEditAtCompleted() {

@@ -6,7 +6,7 @@ import todomvc4tasj.pageobjects_pagemodules0202.pageobjects.pages.ToDoMVCPage;
 import static todomvc4tasj.pageobjects_pagemodules0202.pageobjects.pages.ToDoMVCPage.TaskType.ACTIVE;
 import static todomvc4tasj.pageobjects_pagemodules0202.pageobjects.pages.ToDoMVCPage.TaskType.COMPLETED;
 
-public class ToDoMVCAllFilterTest {
+public class ToDoMVCAllFilterTest extends BaseTest{
 
     ToDoMVCPage page = new ToDoMVCPage();
 

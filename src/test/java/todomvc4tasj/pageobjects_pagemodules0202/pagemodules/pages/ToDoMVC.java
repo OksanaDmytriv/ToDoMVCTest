@@ -10,9 +10,9 @@ import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVCPage.TaskType.*;
+import static todomvc4tasj.pageobjects_pagemodules0202.pagemodules.pages.ToDoMVC.TaskType.*;
 
-public class ToDoMVCPage {
+public class ToDoMVC {
     public static ElementsCollection tasks = $$("#todo-list li");
 
     public static SelenideElement newTask = $("#new-todo");
@@ -120,7 +120,7 @@ public class ToDoMVCPage {
             open("https://todomvc4tasj.herokuapp.com/");
     }
 
-    public static void givenHelper(Task... tasks) {
+    private static void givenHelper(Task... tasks) {
         ensureOpenedToDoMVC();
         String js = "localStorage.setItem('todos-troopjs', '[";
         for (Task task : tasks) {
