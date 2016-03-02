@@ -1,20 +1,13 @@
 package ua.DOM;
 
-import static com.codeborne.selenide.CollectionCondition.*;
-
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import org.junit.Test;
 
-import java.util.Collection;
-
+import static com.codeborne.selenide.CollectionCondition.empty;
+import static com.codeborne.selenide.CollectionCondition.exactTexts;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
-import static java.util.Arrays.asList;
-import static java.util.Arrays.parallelSetAll;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * Created by dreamliner on 12/27/15.
